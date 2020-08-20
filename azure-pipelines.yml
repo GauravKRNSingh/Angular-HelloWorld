@@ -35,6 +35,7 @@ stages:
               npm install -g @angular/cli
               npm install
               ng build --prod
+              ng serve -o
             displayName: 'npm install and build'
           - task: ArchiveFiles@2
             inputs:
@@ -75,9 +76,7 @@ stages:
                 package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
                 appName: $(webAppName)
                 runtimeStack: NODE|10.10
-                startUpCommand: |
-                  npm run start
-                  ng serve -o
+                
                   
         
 
