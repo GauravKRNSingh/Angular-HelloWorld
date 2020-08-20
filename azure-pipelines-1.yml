@@ -11,10 +11,10 @@ variables:
   value: 'ubuntu-latest'
 
 - name: webAppName
-  value: 'angulargks'
+  value: 'windowsgks'
 
 - name: azureSubscription
-  value: 'angularGaurav'
+  value: 'windowsgks'
 
 stages:
   - stage: Build
@@ -27,10 +27,6 @@ stages:
           demands: 
           - npm
         steps:
-          - task: NodeTool@0
-            displayName: Installing Nodejs
-            inputs:
-              versionSpec: 10.x
           - script: |
               npm install -g @angular/cli
               npm install
@@ -69,7 +65,7 @@ stages:
               displayName: Deploying to webapp
               inputs:
                 azureSubscription: $(azureSubscription)
-                appType: webAppLinux
+                appType: webApp
                 package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
                 appName: $(webAppName)
                 runtimeStack: NODE|10.10
