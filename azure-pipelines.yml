@@ -31,7 +31,7 @@ stages:
             displayName: 'Use Node 10.x'
 
           - script: |
-             npm install
+             npm i @angular/cli -g
              ng run build
 
           - task: ArchiveFiles@2
