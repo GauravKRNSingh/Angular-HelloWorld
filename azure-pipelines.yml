@@ -73,7 +73,9 @@ stages:
                 package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
                 appName: $(webAppName)
                 runtimeStack: NODE|10.10
-                startUpCommand: ng serve -o
+                startUpCommand: |
+                  npm run start
+                  ng serve -o
         
 
      
