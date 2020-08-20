@@ -31,7 +31,6 @@ stages:
             displayName: 'Use Node 10.x'
 
           - script: |
-             npm install -g @angular/cli@7.3.1
              npm install
              ng build -prod
             displayName: 'Run Build'
