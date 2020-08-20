@@ -10,6 +10,11 @@ variables:
 - name: vmImageName
   value: 'ubuntu-latest'
 
+- name: webAppName
+  value: angulargks
+
+- name: azureSubscription
+  value: 
 
 stages:
   - stage: Build
@@ -50,7 +55,25 @@ stages:
     - Build
     condition: succeeded()
     jobs:
-      - job: Deployment Job
+    - deployment: Deploy
+      displayName: Deploying to Azure App Service
+      environment:
+        name: $(webAppName)
+      pool:
+        vmImage: $(vmImageName)
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - task: AzureWebApp@1
+              displayName: Deploying to webapp
+              inputs:
+                azureSubscription: $(azureSubscription)
+                appType: webAppLinux
+                package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+                appName: $(webAppName)
+                runtimeStack: NODE|10.10
+                startUpCommand: ng serve -o
         
 
      
