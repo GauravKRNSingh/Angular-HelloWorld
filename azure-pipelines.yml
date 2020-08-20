@@ -34,7 +34,7 @@ stages:
           - script: |
               npm install -g @angular/cli
               npm install
-              ng serve
+              ng build
             displayName: 'npm install and build'
           - task: ArchiveFiles@2
             inputs:
