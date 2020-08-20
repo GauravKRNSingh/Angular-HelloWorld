@@ -30,24 +30,9 @@ stages:
           - task: UseNode@1
             displayName: 'Use Node 10.x'
 
-          - task: Npm@1
-            displayName: 'npm custom'
-            inputs:
-              command: custom
-              verbose: false
-              customCommand: 'install @angular/cli –g'
-
-          - task: Npm@1
-            displayName: 'npm install'
-            inputs:
-              verbose: false
-
-          - task: Npm@1
-            displayName: 'production build'
-            inputs:
-              command: custom
-              verbose: false
-              customCommand: 'run build'
+          - script: |
+             npm install
+             ng run build
 
           - task: ArchiveFiles@2
             inputs:
