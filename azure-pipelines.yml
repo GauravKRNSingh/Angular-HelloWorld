@@ -27,15 +27,15 @@ stages:
           demands: 
           - npm
         steps:
-          - task: UseNode@1
-            displayName: 'Use Node 10.x'
-
+          - task: NodeTool@0
+            displayName: Installing Nodejs
+            inputs:
+              versionSpec: 10.x
           - script: |
-             npm install @angular/cli@7.3.1
-             npm install
-             ng build --prod
-            displayName: 'Run Build'
-
+              npm install -g @angular/cli
+              npm install
+              ng build --prod
+            displayName: 'npm install and build'
           - task: ArchiveFiles@2
             inputs:
               rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
@@ -61,8 +61,6 @@ stages:
         name: $(webAppName)
       pool:
         vmImage: $(vmImageName)
-        demands:
-        - npm
       strategy:
         runOnce:
           deploy:
@@ -76,10 +74,3 @@ stages:
                 appName: $(webAppName)
                 runtimeStack: NODE|10.10
                 
-                  
-        
-
-     
-
-
-
