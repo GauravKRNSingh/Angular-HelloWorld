@@ -27,10 +27,6 @@ stages:
           demands: 
           - npm
         steps:
-          - task: NodeTool@0
-            displayName: Installing Nodejs
-            inputs:
-              versionSpec: 10.x
           - script: |
               npm install -g @angular/cli
               npm install
@@ -72,6 +68,6 @@ stages:
                 appType: webAppLinux
                 package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
                 appName: $(webAppName)
-                runtimeStack: NODE|10.10
+                runtimeStack: 'PHP|7.3'
                 startUpCommand: npm run start
-                
+
