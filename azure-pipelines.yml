@@ -27,16 +27,28 @@ stages:
           demands: 
           - npm
         steps:
-          - task: NodeTool@0
-            displayName: Installing Nodejs
+          - task: UseNode@1
+            displayName: 'Use Node 10.x'
+
+          - task: Npm@1
+            displayName: 'npm custom'
             inputs:
-              versionSpec: 10.x
-          - script: |
-              npm install -g @angular/cli
-              npm install
-              ng build --prod
-              ng serve -o
-            displayName: 'npm install and build'
+              command: custom
+              verbose: false
+              customCommand: 'install @angular/cli –g'
+
+          - task: Npm@1
+            displayName: 'npm install'
+            inputs:
+              verbose: false
+
+          - task: Npm@1
+            displayName: 'production build'
+            inputs:
+              command: custom
+              verbose: false
+              customCommand: 'run build'
+
           - task: ArchiveFiles@2
             inputs:
               rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
