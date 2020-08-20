@@ -11,10 +11,10 @@ variables:
   value: 'ubuntu-latest'
 
 - name: webAppName
-  value: angulargks
+  value: 'angulargks'
 
 - name: azureSubscription
-  value: 
+  value: 'angularGaurav'
 
 stages:
   - stage: Build
