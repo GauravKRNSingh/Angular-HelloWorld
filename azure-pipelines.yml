@@ -29,7 +29,7 @@ stages:
         steps:
           - script: |
               npm install -g @angular/cli
-              npm install
+              npm install --if-present
               ng build --prod
             displayName: 'npm install and build'
           - task: ArchiveFiles@2
