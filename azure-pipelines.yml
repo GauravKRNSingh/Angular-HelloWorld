@@ -69,5 +69,5 @@ stages:
                 package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
                 appName: $(webAppName)
                 runtimeStack: 'PHP|7.3'
-                startUpCommand: npm run start
+                startUpCommand: ng serve
 
