@@ -33,12 +33,13 @@ stages:
               ng build --prod
             displayName: 'npm install and build'
           
-          - task: CopyFiles@2
+          - task: ArchiveFiles@2
             inputs:
-              SourceFolder: '$(System.DefaultWorkingDirectory)'
-              Contents: '**'
-              TargetFolder: $(Build.ArtifactStagingDirectory)'
-              CleanTargetFolder: true
+              rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+              includeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+              replaceExistingArchive: true
 
           - task: PublishBuildArtifacts@1
             inputs:
