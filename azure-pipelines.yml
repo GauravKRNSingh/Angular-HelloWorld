@@ -71,5 +71,8 @@ stages:
                 package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
                 appName: $(webAppName)
                 runtimeStack: 'PHP|7.3'
+                startUpCommand: |
+                  sudo npm install -g @angular/cli
+                  ng serve
           
 
