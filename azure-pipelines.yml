@@ -32,13 +32,14 @@ stages:
               sudo npm install --if-present
               ng build --prod
             displayName: 'npm install and build'
-          - task: ArchiveFiles@2
+          
+          - task: CopyFiles@2
             inputs:
-              rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-              includeRootFolder: false
-              archiveType: 'zip'
-              archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-              replaceExistingArchive: true
+              SourceFolder: '$(System.DefaultWorkingDirectory)'
+              Contents: '**'
+              TargetFolder: $(Build.ArtifactStagingDirectory)'
+              CleanTargetFolder: true
+
           - task: PublishBuildArtifacts@1
             inputs:
               PathtoPublish: '$(Build.ArtifactStagingDirectory)'
