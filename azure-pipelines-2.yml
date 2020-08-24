@@ -74,7 +74,8 @@ stages:
                 startUpCommand: |
                   sudo apt install npm
                   sudo npm install -g @angular/cli
-                  ng serve
+                  sudo npm install
+                  sudo ng serve
 
                 
           
