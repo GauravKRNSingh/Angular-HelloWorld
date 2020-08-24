@@ -67,7 +67,7 @@ stages:
               displayName: Deploying to webapp
               inputs:
                 azureSubscription: $(azureSubscription)
-                appType: webAppLinux
+                appType: webApp
                 package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
                 appName: $(webAppName)
                 runtimeStack: 'NODE|10.10'
