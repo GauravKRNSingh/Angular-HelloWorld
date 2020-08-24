@@ -70,7 +70,7 @@ stages:
                 appType: webAppLinux
                 package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
                 appName: $(webAppName)
-                runtimeStack: 'PHP|7.3'
+                runtimeStack: 'NODE|10.10'
                 
           
 
